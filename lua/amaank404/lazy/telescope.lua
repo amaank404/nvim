@@ -26,5 +26,7 @@ return {
         end)
         vim.keymap.set('n', '<leader>ht', builtin.help_tags, {})
         vim.keymap.set('n', '<leader><leader>', builtin.buffers, {})
-    end
+    end,
+
+    priority = 100,
 }
