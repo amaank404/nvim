@@ -8,7 +8,18 @@ return {
     },
 
     config = function()
-        require('telescope').setup({})
+        require('telescope').setup({
+            defaults = {
+                mappings = {
+                    n = {
+                        ['<c-d>'] = require('telescope.actions').delete_buffer
+                    },
+                    i = {
+                        ['<c-d>'] = require('telescope.actions').delete_buffer
+                    }
+                }
+            },
+        })
 
         local builtin = require('telescope.builtin')
         local wk = require("which-key")

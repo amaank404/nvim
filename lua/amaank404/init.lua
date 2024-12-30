@@ -22,6 +22,7 @@ vim.opt.incsearch        = true
 vim.opt.scrolloff        = 8
 
 vim.opt.colorcolumn      = "100"
+vim.opt.cmdheight        = 2
 
 -- Neovide specific details
 if vim.g.neovide then
@@ -67,6 +68,7 @@ vim.api.nvim_create_autocmd({ 'UIEnter' }, {
         local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
         if client ~= nil and client.name == "Firenvim" then
             vim.opt.wrap = true
+            vim.opt.cmdheight = 0
 
             vim.g.firenvim_config = {
                 globalSettings = { alt = "all" },
