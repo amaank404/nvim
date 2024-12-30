@@ -12,13 +12,25 @@ return {
             defaults = {
                 mappings = {
                     n = {
-                        ['<c-d>'] = require('telescope.actions').delete_buffer
+                        ["<C-h>"] = "which_key"
                     },
                     i = {
-                        ['<c-d>'] = require('telescope.actions').delete_buffer
+                        ["<C-h>"] = "which_key"
                     }
                 }
             },
+            pickers = {
+                buffers = {
+                    mappings = {
+                        n = {
+                            ['<c-d>'] = require('telescope.actions').delete_buffer,
+                        },
+                        i = {
+                            ['<c-d>'] = require('telescope.actions').delete_buffer,
+                        }
+                    }
+                }
+            }
         })
 
         local builtin = require('telescope.builtin')
