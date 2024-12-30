@@ -39,7 +39,8 @@ return {
         end
 
         -- global
-        vim.api.nvim_set_keymap("n", "<leader>tv", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
+        vim.api.nvim_set_keymap("n", "<leader>fv", ":NvimTreeToggle<cr>",
+            { silent = true, noremap = true, desc = "Toggle Tree" })
 
         -- on_attach
         local function on_attach(bufnr)
@@ -71,4 +72,5 @@ return {
             }
         }
     end,
+    enable = false,
 }

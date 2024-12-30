@@ -23,6 +23,7 @@ vim.opt.scrolloff        = 8
 
 vim.opt.colorcolumn      = "100"
 
+-- Neovide specific details
 if vim.g.neovide then
     vim.g.neovide_scale_factor = 0.8
     vim.g.neovide_title_background_color = string.format(
@@ -53,3 +54,32 @@ if vim.g.neovide then
         callback = set_ime
     })
 end
+
+-- Recall last used colorscheme
+local theme = require('last-color').recall() or 'kanagawa'
+
+print(theme)
+
+vim.cmd.colorscheme(theme)
+
+vim.api.nvim_create_autocmd({ 'UIEnter' }, {
+    callback = function(event)
+        local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
+        if client ~= nil and client.name == "Firenvim" then
+            vim.opt.wrap = true
+
+            vim.g.firenvim_config = {
+                globalSettings = { alt = "all" },
+                localSettings = {
+                    [".*"] = {
+                        cmdline  = "neovim",
+                        content  = "text",
+                        priority = 0,
+                        selector = "textarea",
+                        takeover = "never"
+                    }
+                }
+            }
+        end
+    end
+})

@@ -1,38 +1,48 @@
 return {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     enabled = true,
     keys = {
         {
-            "<leader>xx",
+            "<leader>.x",
             "<cmd>Trouble diagnostics toggle<cr>",
-            desc = "Diagnostics (Trouble)",
+            desc = "Diagnostics",
         },
         {
-            "<leader>xX",
+            "<leader>.X",
             "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-            desc = "Buffer Diagnostics (Trouble)",
+            desc = "Buffer Diagnostics",
         },
         {
-            "<leader>cs",
+            "<leader>.s",
             "<cmd>Trouble symbols toggle focus=false<cr>",
-            desc = "Symbols (Trouble)",
+            desc = "Symbols",
         },
         {
-            "<leader>cl",
+            "<leader>.l",
             "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-            desc = "LSP Definitions / references / ... (Trouble)",
+            desc = "LSP Definitions / References / ...",
         },
         {
-            "<leader>xL",
+            "<leader>.L",
             "<cmd>Trouble loclist toggle<cr>",
-            desc = "Location List (Trouble)",
+            desc = "Location List",
         },
         {
-            "<leader>xQ",
+            "<leader>.Q",
             "<cmd>Trouble qflist toggle<cr>",
-            desc = "Quickfix List (Trouble)",
+            desc = "Quickfix List",
         },
     },
+
+    opts = {},
+    config = function()
+        require("trouble").setup({})
+
+        local wk = require("which-key")
+
+        wk.add({
+
+        })
+    end
 }
