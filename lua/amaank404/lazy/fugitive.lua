@@ -5,7 +5,9 @@ return {
 
         wk.add({
             { "<leader>g",  group = "git" },
-            { "<leader>gs", vim.cmd.Git,  desc = "Open Fugitive" }
+            { "<leader>gg", vim.cmd.Git,         desc = "Open Fugitive" },
+            { "<leader>gp", "<cmd>Git push<CR>", desc = "Push" },
+            { "<leader>gd", "<cmd>Git pull<CR>", desc = "Pull" },
         })
     end
 }
