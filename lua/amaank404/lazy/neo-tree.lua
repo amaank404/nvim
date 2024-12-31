@@ -27,13 +27,19 @@ return {
     },
     config = function()
         require("neo-tree").setup({
-
+            default_component_configs = {
+                filesystem = {
+                    follow_current_file = {
+                        enabled = true,
+                    }
+                }
+            }
         })
 
-        wk = require("which-key")
+        local wk = require("which-key")
 
         wk.add({
-            { "<leader>fv", "<cmd>Neotree<CR>", desc = "Open Neotree" }
+            { "<leader>fv", "<cmd>Neotree filesystem reveal left<CR>", desc = "Open Neotree" },
         })
     end
 }

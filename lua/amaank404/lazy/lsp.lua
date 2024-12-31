@@ -77,6 +77,7 @@ return {
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local luasnip = require("luasnip")
 
         cmp.setup({
             snippet = {
@@ -87,9 +88,25 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+                -- ['<Tab>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-y>"] = cmp.mapping.abort(),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.confirm({ select = true })
+                    elseif luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end),
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
